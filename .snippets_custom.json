@@ -1,0 +1,10 @@
+{
+	"php": {
+		"extends": "html",
+		"filters": "c",
+		"snippets": {
+			"pre": "echo '<pre>'; print_r(${child}); echo '</pre>'; die();",
+			"die": "die(${child});",
+		}
+	}
+}
