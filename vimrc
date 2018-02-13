@@ -10,7 +10,7 @@
 set enc=UTF-8
 "}}}
 " MODIFICATIONS TO VIM DEFAULTS:{{{
-set nocompatible
+" TODO set nocompatible
 source $VIMRUNTIME/vimrc_example.vim
 " Changes to vimrc_example.vim
 " as you use Vim always under GIT and make daily backups
@@ -48,22 +48,10 @@ set path+=**
 "}}}
 " VIEWS:{{{
 " Enables easy saving of views
-set viewdir=$USERPROFILE/vimfiles/view
+set viewdir=$HOME/.vim/view
 " To automatically save and restore views for *.c files:
 "au BufWinLeave *.c mkview
 "au BufWinEnter *.c silent loadview
-"}}}
-" LAYOUT AND COLORS:{{{
-" Wraps on words instead of characters
-set linebreak
-set lines=46 columns=92
-" Console colors are defined in Console's 16-color settings
-"highlight Normal guibg=#131313 ctermbg=0
-"highlight Visual guibg=#595959 ctermbg=8
-"highlight Normal guifg=#C8C8C8 ctermfg=7
-"highlight Normal font=Consolas:h14:cDEFAULT
-" Remove m: Menu bar, g: Grey menu items, t: Tearoff menu items, T: Toolbar
-set guioptions=egrL
 "}}}
 " LINE NUMBERS:{{{
 set number
@@ -85,7 +73,7 @@ inoremap JK <Esc>
 
 " Edit and source _vimrc
 nnoremap <leader>ev :edit $MYVIMRC<CR>
-nnoremap <leader>sv :write<CR>:source $MYVIMRC<CR>:echo "_vimrc sourced!"<CR>
+nnoremap <leader>sv :write<CR>:source $MYVIMRC<CR>:echo "vimrc sourced!"<CR>
 
 " Tag-related
 command! MakeTags !ctags -R
@@ -171,8 +159,10 @@ nnoremap <Leader>nb @f<CR>@g<CR>
 filetype off    " required, default configuration restored later
 
 " set the runtime path to include Vundle and initialize
-set rtp+=$USERPROFILE/vimfiles/bundle/Vundle.vim/
-call vundle#begin('$USERPROFILE/vimfiles/bundle/')
+set rtp+=$HOME/.vim/bundle/Vundle.vim
+" TODO Maybe path is required in Windows, check it
+" call vundle#begin('$HOME/vimfiles/bundle/')
+call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
@@ -189,7 +179,10 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'easymotion/vim-easymotion'
 "Plugin 'svermeulen/vim-easyclip'
 Plugin 'mattn/emmet-vim'
-Plugin 'aserebryakov/filestyle'
+" It breaks with default colorscheme because ctermbg is not defined in it
+" so you fork it
+"Plugin 'aserebryakov/filestyle'
+Plugin 'Juanitou/filestyle'
 Plugin 'tpope/vim-fugitive'
 Plugin 'othree/html5.vim'
 Plugin 'scrooloose/nerdcommenter'
@@ -216,7 +209,7 @@ set laststatus=2
 " Custom Emmet snippets
 " The g:user_emmet_settings variable must be set before loading the plugin!
 let g:user_emmet_settings = webapi#json#decode(
-      \ join(readfile(expand('~/vimfiles/.snippets_custom.json')), "\n"))
+      \ join(readfile(expand('~/.vim/.snippets_custom.json')), "\n"))
 
 " Netrw Explorer
 let g:netrw_banner = 0
@@ -233,10 +226,22 @@ map <leader>x :20Lexplore<cr>
 let g:php_cs_fixer_verbose = 1
 let g:php_cs_fixer_dry_run = 1
 
+" LAYOUT AND COLORS:{{{
+" Wraps on words instead of characters
+set linebreak
+" Console colors in Windows are defined in Console's 16-color settings
+"highlight Normal guibg=#131313 ctermbg=0
+"highlight Visual guibg=#595959 ctermbg=8
+"highlight Normal guifg=#C8C8C8 ctermfg=7
+"highlight Normal font=Consolas:h14:cDEFAULT
+
 " Solarized
 " Load color scheme only in gVim,
 " set the color scheme in the terminal
 if has("gui_running")
+  set lines=46 columns=92
+  " Remove m: Menu bar, g: Grey menu items, t: Tearoff menu items, T: Toolbar
+  set guioptions=egrL
   set background=light
   let g:solarized_visibility = "normal"
   let g:solarized_contrast = "normal"
@@ -244,6 +249,7 @@ if has("gui_running")
   highlight Normal font=Consolas:h16:cDEFAULT
   highlight SpecialKey gui=bold
 endif
+"}}}
 
 " Syntastic
 " Airline has Synstatic integration by default
