@@ -75,6 +75,9 @@ inoremap JK <Esc>
 nnoremap <leader>ev :edit $MYVIMRC<CR>
 nnoremap <leader>sv :write<CR>:source $MYVIMRC<CR>:echo "vimrc sourced!"<CR>
 
+" Allow saving of read-only files as root
+cmap w!! w !su -m root -c "tee % >& /dev/null"
+
 " Tag-related
 command! MakeTags !ctags -R
 " Jump tags forth and back in help and code
