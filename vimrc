@@ -182,8 +182,9 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'easymotion/vim-easymotion'
 "Plugin 'svermeulen/vim-easyclip'
 Plugin 'mattn/emmet-vim'
-" It breaks with default colorscheme because ctermbg is not defined in it
-" so you fork it
+" Flestyle breaks with the default colorscheme because ctermbg is not defined.
+" The issue has been solved by disabling ignored patterns, but adds
+" an annoying warning so you fork the repository to silence it.
 "Plugin 'aserebryakov/filestyle'
 Plugin 'Juanitou/filestyle'
 Plugin 'tpope/vim-fugitive'
