@@ -186,6 +186,7 @@ Plugin 'mattn/emmet-vim'
 " The issue has been solved by disabling ignored patterns, but adds
 " an annoying warning so you fork the repository to silence it.
 "Plugin 'aserebryakov/filestyle'
+Plugin 'TTCoach'
 Plugin 'Juanitou/filestyle'
 Plugin 'tpope/vim-fugitive'
 Plugin 'othree/html5.vim'
