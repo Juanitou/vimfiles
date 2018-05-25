@@ -212,10 +212,13 @@ filetype plugin indent on   " required
 " Airline
 set laststatus=2
 
-" Custom Emmet snippets
+" Emmet custom snippets
 " The g:user_emmet_settings variable must be set before loading the plugin!
 let g:user_emmet_settings = webapi#json#decode(
       \ join(readfile(expand('~/.vim/.snippets_custom.json')), "\n"))
+
+" FileStyle
+let g:filestyle_ignore = ['help']
 
 " Netrw Explorer
 let g:netrw_banner = 0
@@ -227,11 +230,22 @@ let g:netrw_list_hide .= ',\(^\|\s\s\)\zs\.\S\+' " Ignore dot files
 map <leader>x :20Lexplore<cr>
 
 " PHP-CS-Fixer
-" TODO: Really required to complement Syntastic style checker (PHP_CodeSniffer),
-" which could fix errors itself?
+" TODO: Really required to complement Syntastic style checker
+" (PHP_CodeSniffer), which could fix errors itself?
 let g:php_cs_fixer_verbose = 1
 let g:php_cs_fixer_dry_run = 1
 
+" PHP QA
+" Unused while testing Syntastic
+"let g:phpqa_php_cmd = "C:/wamp/bin/php/php5.2.9-1/php"
+
+" Syntastic
+" Airline has Synstatic integration by default
+" Add PHP_CodeSniffer to the checkers
+let g:syntastic_php_checkers = ['php', 'phpcs']
+let g:syntastic_php_phpcs_args='--standard=PSR2 -n'
+"}}}
+"}}}
 " LAYOUT AND COLORS:{{{
 " Wraps on words instead of characters
 set linebreak
@@ -258,18 +272,6 @@ else
   " Workaround for FileStyle warning on ctermbg not set
   highlight Normal ctermbg=15
 endif
-"}}}
-
-" Syntastic
-" Airline has Synstatic integration by default
-" Add PHP_CodeSniffer to the checkers
-let g:syntastic_php_checkers = ['php', 'phpcs']
-let g:syntastic_php_phpcs_args='--standard=PSR2 -n'
-
-" PHP QA
-" Unused while testing Syntastic
-"let g:phpqa_php_cmd = "C:/wamp/bin/php/php5.2.9-1/php"
-"}}}
 "}}}
 " FUNCTIONS:{{{
 " MyDiff{{{
