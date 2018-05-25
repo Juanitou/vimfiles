@@ -253,6 +253,8 @@ if has("gui_running")
   colorscheme solarized
   highlight Normal font=Consolas:h16:cDEFAULT
   highlight SpecialKey gui=bold
+else
+  highlight Normal ctermbg=15
 endif
 "}}}
 
