@@ -373,6 +373,8 @@ nnoremap <Leader>iac :call IACMailing()<CR>
 " au BufNewFile,BufRead *.php set fileformat=unix
 " HTML:
 au FileType html setlocal ts=4 sts=4 sw=4 expandtab
+" Silverstripe_template:
+au FileType ss.html setlocal ts=2 sts=2 sw=2 expandtab
 " JSON:
 au FileType json setlocal ts=2 sts=2 sw=2 expandtab
 " VIM:
