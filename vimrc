@@ -254,6 +254,7 @@ if has("gui_running")
   highlight Normal font=Consolas:h16:cDEFAULT
   highlight SpecialKey gui=bold
 else
+  " Workaround for FileStyle warning on ctermbg not set
   highlight Normal ctermbg=15
 endif
 "}}}
