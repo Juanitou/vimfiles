@@ -82,8 +82,9 @@ cmap w!! w !su -m root -c "tee % >& /dev/null"
 command! MakeTags !ctags -R
 " Jump tags forth and back in help and code
 nnoremap <F10> <C-]>
-nnoremap g<F10> g<C-]>  " ambiguous tags (opens a list)
-nnoremap <S-F10> <C-T>
+" ambiguous tags (opens a list)
+nnoremap g<F10> g<C-]>
+nnoremap <BS> <C-T>
 
 " Easy buffer select
 nnoremap <F6> :buffers<CR>:buffer<Space>
