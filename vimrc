@@ -180,6 +180,7 @@ Plugin 'PProvost/vim-ps1.git'
 " utility
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'easymotion/vim-easymotion'
 "Plugin 'svermeulen/vim-easyclip'
 Plugin 'mattn/emmet-vim'
@@ -256,8 +257,10 @@ set linebreak
 "highlight Normal font=Consolas:h14:cDEFAULT
 
 " Solarized
-" Load color scheme only in gVim,
-" set the color scheme in the terminal
+" You load color scheme only in gVim
+" and set the color scheme in the terminal,
+" since playing both with xterm, tmux and vim
+" is too tricky.
 if has("gui_running")
   set lines=46 columns=92
   " Remove m: Menu bar, g: Grey menu items, t: Tearoff menu items, T: Toolbar
@@ -269,6 +272,7 @@ if has("gui_running")
   highlight Normal font=Consolas:h16:cDEFAULT
   highlight SpecialKey gui=bold
 else
+  "let g:airline_theme='solarized'
   " Workaround for FileStyle warning on ctermbg not set
   highlight Normal ctermbg=15
   " Remove reverse style of vertical split
