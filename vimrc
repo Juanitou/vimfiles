@@ -243,7 +243,7 @@ let g:php_cs_fixer_dry_run = 1
 " Airline has Synstatic integration by default
 " Add PHP_CodeSniffer to the checkers
 let g:syntastic_php_checkers = ['php', 'phpcs']
-let g:syntastic_php_phpcs_args='--standard=PSR2 -n'
+let g:syntastic_php_phpcs_args='-n'
 "}}}
 "}}}
 " LAYOUT AND COLORS:{{{
