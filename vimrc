@@ -271,6 +271,8 @@ if has("gui_running")
 else
   " Workaround for FileStyle warning on ctermbg not set
   highlight Normal ctermbg=15
+  " Remove reverse style of vertical split
+  highlight VertSplit cterm=none
 endif
 "}}}
 " FUNCTIONS:{{{
