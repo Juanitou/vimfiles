@@ -111,7 +111,7 @@ nnoremap tm :tabmove<Space>
 nnoremap td :tabclose<CR>
 
 " Make space more useful
-"nnoremap <space> za
+nnoremap <space> za
 "nnoremap <space> viw
 
 " Quickly move lines up and down
