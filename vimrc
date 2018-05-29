@@ -199,6 +199,7 @@ Plugin 'adoy/vim-php-refactoring-toolbox'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-syntastic/syntastic'
+Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'mattn/webapi-vim'
 Plugin 'TTCoach'
 
@@ -245,6 +246,9 @@ let g:php_cs_fixer_dry_run = 1
 " Add PHP_CodeSniffer to the checkers
 let g:syntastic_php_checkers = ['php', 'phpcs']
 let g:syntastic_php_phpcs_args = '-n'
+
+" tmux Navigator
+"
 "}}}
 "}}}
 " LAYOUT AND COLORS:{{{
