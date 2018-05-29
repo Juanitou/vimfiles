@@ -84,7 +84,7 @@ command! MakeTags !ctags -R
 nnoremap <F10> <C-]>
 " ambiguous tags (opens a list)
 nnoremap g<F10> g<C-]>
-nnoremap <BS> <C-T>
+nnoremap <F11> <C-T>
 
 " Easy buffer select
 nnoremap <F6> :buffers<CR>:buffer<Space>
@@ -229,7 +229,7 @@ let g:netrw_altv = 1      " split to the right
 let g:netrw_winsize = 0   " split to equal sized window
 let g:netrw_list_hide = netrw_gitignore#Hide()
 let g:netrw_list_hide .= ',\(^\|\s\s\)\zs\.\S\+' " Ignore dot files
-map <leader>x :20Lexplore<cr>
+map <leader>x :20Lexplore<CR>
 
 " PHP-CS-Fixer
 " TODO: Really required to complement Syntastic style checker
@@ -248,7 +248,8 @@ let g:syntastic_php_checkers = ['php', 'phpcs']
 let g:syntastic_php_phpcs_args = '-n'
 
 " tmux Navigator
-"
+" Workaround for default <C-H> map sending a backspace
+nnoremap <silent> <BS> :TmuxNavigateLeft<CR>
 "}}}
 "}}}
 " LAYOUT AND COLORS:{{{
