@@ -139,23 +139,23 @@ nnoremap <leader>" viw<Esc>i"<Esc>bi"<Esc>e2l
 
 " Dendreo macros
 " Remove blank lines
-let @a=':g/^$/d'
+let @a = ':g/^$/d'
 nnoremap <F2> @a<CR>
 " Replace MS Word bullets (shown as e.g. ) or leading blanks with BBCode
-let @b=':%s/^\W\+/[*] /'
+let @b = ':%s/^\W\+/[*] /'
 nnoremap <F3> @b<CR>
 " Change headings case and make them bold,
 " add blank lines if necessary
-let @c=':%s/^\(\I\)\(.*\)/[b]\1\L\2[\/b]/'
-let @d=':%s/^\(\I\)\(.*\)/\r[b]\1\L\2[\/b]\r/'
+let @c = ':%s/^\(\I\)\(.*\)/[b]\1\L\2[\/b]/'
+let @d = ':%s/^\(\I\)\(.*\)/\r[b]\1\L\2[\/b]\r/'
 nnoremap <F4> @c<CR>
 nnoremap <S-F4> @d<CR>ggdd
 " Surround text blocks with [list] tags
-let @e=':%s/^$\n\(\(\S.*\n\)\+\)/[list]\r\1[\/list]/'
+let @e = ':%s/^$\n\(\(\S.*\n\)\+\)/[list]\r\1[\/list]/'
 nnoremap <F5> @e<CR>
 " Insert non-breaking spaces
-let @f=':%s/ \([:;!?»]\)/\="\<Char-160>" . submatch(1)/g'
-let @g=':%s/\(«\) /\=submatch(1) . "\<Char-160>"/g'
+let @f = ':%s/ \([:;!?»]\)/\="\<Char-160>" . submatch(1)/g'
+let @g = ':%s/\(«\) /\=submatch(1) . "\<Char-160>"/g'
 nnoremap <Leader>nb @f<CR>@g<CR>
 "}}}
 " PLUGINS:{{{
@@ -244,7 +244,7 @@ let g:php_cs_fixer_dry_run = 1
 " Airline has Synstatic integration by default
 " Add PHP_CodeSniffer to the checkers
 let g:syntastic_php_checkers = ['php', 'phpcs']
-let g:syntastic_php_phpcs_args='-n'
+let g:syntastic_php_phpcs_args = '-n'
 "}}}
 "}}}
 " LAYOUT AND COLORS:{{{
@@ -256,27 +256,31 @@ set linebreak
 "highlight Normal guifg=#C8C8C8 ctermfg=7
 "highlight Normal font=Consolas:h14:cDEFAULT
 
-" Solarized
-" You load color scheme only in gVim
-" and set the color scheme in the terminal,
-" since playing both with xterm, tmux and vim
-" is too tricky.
 if has("gui_running")
   set lines=46 columns=92
   " Remove m: Menu bar, g: Grey menu items, t: Tearoff menu items, T: Toolbar
   set guioptions=egrL
   set background=light
+  " Set Solarized colorscheme
   let g:solarized_visibility = "normal"
   let g:solarized_contrast = "normal"
   colorscheme solarized
   highlight Normal font=Consolas:h16:cDEFAULT
   highlight SpecialKey gui=bold
 else
-  "let g:airline_theme='solarized'
-  " Workaround for FileStyle warning on ctermbg not set
-  highlight Normal ctermbg=15
-  " Remove reverse style of vertical split
-  highlight VertSplit cterm=none
+  " Set Solarized colorscheme
+  set background=dark
+  let g:solarized_termtrans = 1
+  " This is not respected
+  let g:solarized_bold = 0
+  colorscheme solarized
+  let g:airline_theme = 'solarized'
+  let g:airline_solarized_normal_green = 1
+  let g:airline_solarized_dark_text = 1
+  let g:airline_solarized_bg = 'dark'
+  " Remove ugly bold coming from Solarized
+  " and workaround for FileStyle warning on ctermbg not set
+  highlight Normal ctermfg=8 ctermbg=8
 endif
 "}}}
 " FUNCTIONS:{{{
