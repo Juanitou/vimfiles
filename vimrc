@@ -65,7 +65,6 @@ set nrformats+=alpha
 " KEY MAPPINGS AND MACROS:{{{
 " Change default leader (\)
 let mapleader = ","
-"let localmapleader = ";"
 
 " Quickly quit Insert mode
 inoremap jk <Esc>
@@ -86,8 +85,9 @@ nnoremap <F10> <C-]>
 nnoremap g<F10> g<C-]>
 nnoremap <F11> <C-T>
 
-" Easy buffer select
+" Easy buffer select or edit the alternate file 
 nnoremap <F6> :buffers<CR>:buffer<Space>
+nnoremap <F7> :e #<CR>
 
 " Easier marks navigation
 nnoremap è `
