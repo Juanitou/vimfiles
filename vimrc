@@ -134,10 +134,10 @@ vnoremap <leader>" <Esc>`<i"<Esc>`>a"<Esc>l
 " ...word in quotes
 nnoremap <leader>" viw<Esc>i"<Esc>bi"<Esc>e2l
 
-" IAC mailing HTML macros
+" Useful HTML macros
 " See IACMailing() later
 
-" Dendreo macros
+" Useful text and BBCode macros
 " Remove blank lines
 let @a = ':g/^$/d'
 nnoremap <F2> @a<CR>
