@@ -280,9 +280,10 @@ else
   let g:solarized_bold = 0
   colorscheme solarized
   let g:airline_theme = 'solarized'
-  let g:airline_solarized_normal_green = 1
+  let g:airline_solarized_normal_green = 0
   let g:airline_solarized_dark_text = 1
   let g:airline_solarized_bg = 'dark'
+  let g:airline_powerline_fonts = 1
   " Remove ugly bold coming from Solarized
   " and workaround for FileStyle warning on ctermbg not set
   highlight Normal ctermfg=8 ctermbg=8
