@@ -77,13 +77,14 @@ nnoremap <leader>sv :write<CR>:source $MYVIMRC<CR>:echo "vimrc sourced!"<CR>
 " Allow saving of read-only files as root
 cmap w!! w !su -m root -c "tee % >& /dev/null"
 
-" Tag-related
+" Tag-related and completion
 command! MakeTags !ctags -R
 " Jump tags forth and back in help and code
 nnoremap <F10> <C-]>
 " ambiguous tags (opens a list)
 nnoremap g<F10> g<C-]>
 nnoremap <F11> <C-T>
+inoremap <F10> <C-]>
 
 " Easy buffer select or edit the alternate file 
 nnoremap <F6> :buffers<CR>:buffer<Space>
