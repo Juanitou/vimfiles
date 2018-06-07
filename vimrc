@@ -178,6 +178,7 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'phalkunz/vim-ss'
 " syntax
 Plugin 'PProvost/vim-ps1.git'
+Plugin 'pangloss/vim-javascript.git'
 " utility
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'vim-airline/vim-airline'
