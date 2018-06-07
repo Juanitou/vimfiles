@@ -399,13 +399,17 @@ nnoremap <Leader>iac :call IACMailing()<CR>
 " This is automatically applied by Vim
 " au BufNewFile,BufRead *.php set fileformat=unix
 " HTML:
-au FileType html setlocal ts=4 sts=4 sw=4 expandtab
-" Silverstripe_template:
-au FileType ss.html setlocal ts=2 sts=2 sw=2 expandtab
+au! FileType html setlocal ts=4 sts=4 sw=4 expandtab
+" SilverStripe_template:
+augroup SilverStripe
+  au! FileType ss.html setlocal ts=2 sts=2 sw=2 expandtab
+  " Prevent variable attributes to trip the syntax checker
+  let g:syntastic_html_tidy_ignore_errors = ['has invalid value "$']
+augroup END
 " JSON:
-au FileType json setlocal ts=2 sts=2 sw=2 expandtab
+au! FileType json setlocal ts=2 sts=2 sw=2 expandtab
 " VIM:
-au FileType vim setlocal ts=2 sts=2 sw=2 expandtab foldmethod=marker
+au! FileType vim setlocal ts=2 sts=2 sw=2 expandtab foldmethod=marker
 " YAML:
-au FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+au! FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 "}}}
