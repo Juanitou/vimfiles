@@ -216,6 +216,7 @@ filetype plugin indent on   " required
 """""""""""""""""""""""""""""""
 
 " Airline
+" NOTE: Airline has Synstatic integration by default
 set laststatus=2
 
 " Emmet custom snippets
@@ -246,7 +247,10 @@ let g:php_cs_fixer_dry_run = 1
 "let g:phpqa_php_cmd = "C:/wamp/bin/php/php5.2.9-1/php"
 
 " Syntastic
-" Airline has Synstatic integration by default
+" Automatically run :Errors to populate local-list
+let g:syntastic_always_populate_loc_list = 1
+" Add ESLint to the checkers
+let g:syntastic_javascript_checkers = ['eslint']
 " Add PHP_CodeSniffer to the checkers
 let g:syntastic_php_checkers = ['php', 'phpcs']
 let g:syntastic_php_phpcs_args = '-n'
