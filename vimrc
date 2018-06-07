@@ -189,8 +189,10 @@ Plugin 'mattn/emmet-vim'
 " Flestyle breaks with the default colorscheme because ctermbg is not defined.
 " The issue has been solved by disabling ignored patterns, but adds
 " an annoying warning so you fork the repository to silence it.
+" Nevertheless, other errors appear due to your use of Vim inside tmux and
+" xterm, so you disable altogether for the moment being.
 "Plugin 'aserebryakov/filestyle'
-Plugin 'Juanitou/filestyle'
+"Plugin 'Juanitou/filestyle'
 Plugin 'tpope/vim-fugitive'
 Plugin 'othree/html5.vim'
 Plugin 'scrooloose/nerdcommenter'
