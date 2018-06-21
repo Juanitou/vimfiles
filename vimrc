@@ -218,8 +218,7 @@ filetype plugin indent on   " required
 """""""""""""""""""""""""""""""
 
 " Airline
-" NOTE: Airline has Synstatic integration by default
-"set laststatus=2
+" NOTE: Airline has Syntastic and Fugitive integration by default
 
 " Emmet custom snippets
 " The g:user_emmet_settings variable must be set before loading the plugin!
