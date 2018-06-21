@@ -63,11 +63,13 @@ set nrformats+=alpha
 "}}}
 "}}}
 " KEY MAPPINGS AND MACROS:{{{
+" S-Tab not working to reverse file browsing by default in FreeBSD
+exe 'set t_kB=' . nr2char(27) . '[Z'
 " Change default leader (\)
 let mapleader = ","
 
 " Quickly quit Insert mode
-inoremap jk <Esc>
+inoremap jk <Esc>:w<CR>
 inoremap JK <Esc>
 
 " Edit and source _vimrc
@@ -191,7 +193,7 @@ Plugin 'mattn/emmet-vim'
 " an annoying warning so you fork the repository to silence it.
 " Nevertheless, other errors appear due to your use of Vim inside tmux and
 " xterm, so you disable altogether for the moment being.
-"Plugin 'aserebryakov/filestyle'
+Plugin 'aserebryakov/filestyle'
 "Plugin 'Juanitou/filestyle'
 Plugin 'tpope/vim-fugitive'
 Plugin 'othree/html5.vim'
@@ -298,38 +300,40 @@ else
 endif
 "}}}
 " FUNCTIONS:{{{
-" MyDiff{{{
+" MyDiff for Windows{{{
 " The following one was in the default _vimrc
 " You added the ! after function to stop errors when sourcing
-set diffexpr=MyDiff()
-function! MyDiff()
-  let opt = '-a --binary '
-  if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
-  if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
-  let arg1 = v:fname_in
-  if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
-  let arg2 = v:fname_new
-  if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
-  let arg3 = v:fname_out
-  if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
-  if $VIMRUNTIME =~ ' '
-    if &sh =~ '\<cmd'
-      if empty(&shellxquote)
-        let l:shxq_sav = ''
-        set shellxquote&
+if (has('win32') || has('win64'))
+  set diffexpr=MyDiff()
+  function! MyDiff()
+    let opt = '-a --binary '
+    if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
+    if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
+    let arg1 = v:fname_in
+    if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
+    let arg2 = v:fname_new
+    if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
+    let arg3 = v:fname_out
+    if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
+    if $VIMRUNTIME =~ ' '
+      if &sh =~ '\<cmd'
+        if empty(&shellxquote)
+          let l:shxq_sav = ''
+          set shellxquote&
+        endif
+        let cmd = '"' . $VIMRUNTIME . '\diff"'
+      else
+        let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
       endif
-      let cmd = '"' . $VIMRUNTIME . '\diff"'
     else
-      let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
+      let cmd = $VIMRUNTIME . '\diff'
     endif
-  else
-    let cmd = $VIMRUNTIME . '\diff'
-  endif
-  silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3
-  if exists('l:shxq_sav')
-    let &shellxquote = l:shxq_sav
-  endif
-endfunction
+    silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3
+    if exists('l:shxq_sav')
+      let &shellxquote = l:shxq_sav
+    endif
+  endfunction
+endif
 "}}}
 " HTML entities Encode / Decode{{{
 function! HTMLEncodeLine()
@@ -400,10 +404,10 @@ nnoremap <Leader>iac :call IACMailing()<CR>
 " This is automatically applied by Vim
 " au BufNewFile,BufRead *.php set fileformat=unix
 " HTML:
-au! FileType html setlocal ts=4 sts=4 sw=4 expandtab
+au! FileType html setlocal ts=2 sw=2
 " SilverStripe_template:
 augroup SilverStripe
-  au! FileType ss.html setlocal ts=2 sts=2 sw=2 expandtab
+  au! FileType ss.html setlocal ts=2 sw=2
   " Prevent variable attributes to trip the syntax checker
   let g:syntastic_html_tidy_ignore_errors = ['has invalid value "$']
 augroup END
