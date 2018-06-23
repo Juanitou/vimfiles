@@ -196,13 +196,13 @@ Plugin 'mattn/emmet-vim'
 " xterm, so you disable altogether for the moment being.
 "Plugin 'aserebryakov/filestyle'
 "Plugin 'Juanitou/filestyle'
-Plugin 'ntpeters/vim-better-whitespace'
+" It seems other plugins remove whitespace for you? (at least in PHP)
+"Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'tpope/vim-fugitive'
 Plugin 'othree/html5.vim'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'arnaud-lb/vim-php-namespace'
-" Commented-out while we test Syntastic style checkers
 Plugin 'stephpy/vim-php-cs-fixer'
 Plugin 'adoy/vim-php-refactoring-toolbox'
 Plugin 'tpope/vim-repeat'
@@ -291,7 +291,9 @@ if has("gui_running")
 else
   " Set Solarized colorscheme
   set background=dark
+  " Transparent term
   let g:solarized_termtrans = 1
+  let g:solarized_degrade = 1
   " This is not respected
   let g:solarized_bold = 0
   colorscheme solarized
@@ -300,6 +302,11 @@ else
   let g:airline_solarized_dark_text = 1
   let g:airline_solarized_bg = 'dark'
   let g:airline_powerline_fonts = 1
+  " Airline c section has an issue with solarized
+  " that prints the buffername in the background color.
+  " Define custom highlighting as a workaround.
+  highlight airline_custom ctermfg=3 ctermbg=0
+  let g:airline_section_c='%<%<%#airline_custom#%{airline#extensions#fugitiveline#bufname()}%#__restore__#%m %#__accent_red#%{airline#util#wrap(airline#parts#readonly(),0)}%#__restore__#'
   " Remove ugly bold coming from Solarized
   " and workaround for FileStyle warning on ctermbg not set
   highlight Normal ctermfg=8 ctermbg=8
