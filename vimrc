@@ -182,21 +182,24 @@ Plugin 'phalkunz/vim-ss'
 Plugin 'PProvost/vim-ps1.git'
 Plugin 'pangloss/vim-javascript.git'
 " utility
+Plugin 'jiangmiao/auto-pairs'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'easymotion/vim-easymotion'
 "Plugin 'svermeulen/vim-easyclip'
 Plugin 'mattn/emmet-vim'
-" Flestyle breaks with the default colorscheme because ctermbg is not defined.
+" Filestyle breaks with the default colorscheme because ctermbg is not defined.
 " The issue has been solved by disabling ignored patterns, but adds
 " an annoying warning so you fork the repository to silence it.
 " Nevertheless, other errors appear due to your use of Vim inside tmux and
 " xterm, so you disable altogether for the moment being.
-Plugin 'aserebryakov/filestyle'
+"Plugin 'aserebryakov/filestyle'
 "Plugin 'Juanitou/filestyle'
+Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'tpope/vim-fugitive'
 Plugin 'othree/html5.vim'
+Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'arnaud-lb/vim-php-namespace'
 " Commented-out while we test Syntastic style checkers
@@ -226,7 +229,11 @@ let g:user_emmet_settings = webapi#json#decode(
       \ join(readfile(expand('~/.vim/.snippets_custom.json')), "\n"))
 
 " FileStyle
-let g:filestyle_ignore = ['help']
+"let g:filestyle_ignore = ['help']
+
+" Indent guides
+let g:indent_guides_guide_size = 1
+let g:indent_guides_start_level = 2
 
 " Netrw Explorer
 let g:netrw_banner = 0
