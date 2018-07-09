@@ -10,7 +10,7 @@
 set enc=UTF-8
 "}}}
 " MODIFICATIONS TO VIM DEFAULTS:{{{
-" TODO set nocompatible
+set nocompatible
 source $VIMRUNTIME/vimrc_example.vim
 " Changes to vimrc_example.vim
 " as you use Vim always under GIT and make daily backups
@@ -68,9 +68,10 @@ exe 'set t_kB=' . nr2char(27) . '[Z'
 " Change default leader (\)
 let mapleader = ","
 
-" Quickly quit Insert mode
+" Quickly quit Insert mode and save
 inoremap jk <Esc>:w<CR>
 inoremap JK <Esc>
+nnoremap <C-S> :w<CR>
 
 " Edit and source _vimrc
 nnoremap <leader>ev :edit $MYVIMRC<CR>
@@ -155,7 +156,7 @@ nnoremap <F4> @c<CR>
 nnoremap <S-F4> @d<CR>ggdd
 " Surround text blocks with [list] tags
 let @e = ':%s/^$\n\(\(\S.*\n\)\+\)/[list]\r\1[\/list]/'
-nnoremap <F5> @e<CR>
+"nnoremap <F5> @e<CR>
 " Insert non-breaking spaces
 let @f = ':%s/ \([:;!?»]\)/\="\<Char-160>" . submatch(1)/g'
 let @g = ':%s/\(«\) /\=submatch(1) . "\<Char-160>"/g'
@@ -174,7 +175,7 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-" color scheme
+" color schemes
 Plugin 'altercation/vim-colors-solarized'
 " ftplugin
 Plugin 'phalkunz/vim-ss'
@@ -271,6 +272,7 @@ nnoremap <silent> <BS> :TmuxNavigateLeft<CR>
 " LAYOUT AND COLORS:{{{
 " Wraps on words instead of characters
 set linebreak
+"
 " Console colors in Windows are defined in Console's 16-color settings
 "highlight Normal guibg=#131313 ctermbg=0
 "highlight Visual guibg=#595959 ctermbg=8
@@ -291,25 +293,33 @@ if has("gui_running")
 else
   " Set Solarized colorscheme
   set background=dark
+  " This is the default, recognized by Vim
+  "set t_Co=256
   " Transparent term
+  " Force setting this to get better selection background
+  let g:solarized_termcolors = 256
+  " Setting this allows seeing the dark grey background
+  " of the terminal
   let g:solarized_termtrans = 1
-  let g:solarized_degrade = 1
-  " This is not respected
-  let g:solarized_bold = 0
   colorscheme solarized
   let g:airline_theme = 'solarized'
-  let g:airline_solarized_normal_green = 0
+  "let g:airline_solarized_normal_green = 1
+  " Informative text black instead of white
   let g:airline_solarized_dark_text = 1
-  let g:airline_solarized_bg = 'dark'
+  "let g:airline_solarized_bg = 'dark'
   let g:airline_powerline_fonts = 1
   " Airline c section has an issue with solarized
   " that prints the buffername in the background color.
   " Define custom highlighting as a workaround.
-  highlight airline_custom ctermfg=3 ctermbg=0
+  highlight airline_custom ctermfg=3 ctermbg=235
   let g:airline_section_c='%<%<%#airline_custom#%{airline#extensions#fugitiveline#bufname()}%#__restore__#%m %#__accent_red#%{airline#util#wrap(airline#parts#readonly(),0)}%#__restore__#'
-  " Remove ugly bold coming from Solarized
+  " Remove, amongst others, ugly bold coming from Solarized,
+  " grey background on StatusLine
   " and workaround for FileStyle warning on ctermbg not set
-  highlight Normal ctermfg=8 ctermbg=8
+  highlight Normal ctermfg=8 ctermbg=none
+  highlight SpecialKey gui=bold
+  highlight StatusLine cterm=NONE ctermfg=NONE ctermbg=0
+  highlight Search cterm=NONE ctermfg=136 ctermbg=13
 endif
 "}}}
 " FUNCTIONS:{{{
