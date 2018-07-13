@@ -423,6 +423,11 @@ nnoremap <Leader>iac :call IACMailing()<CR>
 "}}}
 "}}}
 " FILETYPES:{{{
+" CSS:
+augroup CSS
+  " Allow dashes in autocomplete
+  au! FileType css setlocal iskeyword+=\-
+augroup END
 " PHP:
 " This is automatically applied by Vim
 " au BufNewFile,BufRead *.php set fileformat=unix
