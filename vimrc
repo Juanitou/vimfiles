@@ -260,7 +260,7 @@ let g:php_cs_fixer_dry_run = 1
 let g:syntastic_always_populate_loc_list = 1
 " Add ESLint to the checkers
 let g:syntastic_javascript_checkers = ['eslint']
-" Add PHP_CodeSniffer to the checkers
+" Add PHP_CodeSniffer to the checkers, do not print warnings
 let g:syntastic_php_checkers = ['php', 'phpcs']
 let g:syntastic_php_phpcs_args = '-n'
 
@@ -317,9 +317,12 @@ else
   " grey background on StatusLine
   " and workaround for FileStyle warning on ctermbg not set
   highlight Normal ctermfg=8 ctermbg=none
+  highlight Pmenu cterm=NONE ctermbg=8 ctermfg=0
+  highlight Search cterm=NONE ctermfg=136 ctermbg=13
   highlight SpecialKey gui=bold
   highlight StatusLine cterm=NONE ctermfg=NONE ctermbg=0
-  highlight Search cterm=NONE ctermfg=136 ctermbg=13
+  highlight StatusLineNC cterm=reverse ctermfg=0
+  highlight WildMenu cterm=NONE
 endif
 "}}}
 " FUNCTIONS:{{{
