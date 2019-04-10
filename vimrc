@@ -424,6 +424,16 @@ endfunction
 
 nnoremap <Leader>iac :call IACMailing()<CR>
 "}}}
+" Slugify: For accents and other latin characters{{{
+function Slugify()
+  let l:from = "ãàáäâẽèéëêìíïîõòóöôùúüûñç’·/_—,:; "
+  let l:to   = "aaaaaeeeeeiiiiooooouuuunc---------"
+  let l:subs = substitute(tr(tolower(getline(".")), l:from, l:to), '-\+', '-', 'g')
+  call setline(".", l:subs)
+endfunction
+
+nnoremap <Leader>sl :call Slugify()<CR>
+"}}}
 "}}}
 " FILETYPES:{{{
 " CSS:
