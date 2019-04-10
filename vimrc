@@ -424,15 +424,31 @@ endfunction
 
 nnoremap <Leader>iac :call IACMailing()<CR>
 "}}}
-" Slugify: For accents and other latin characters{{{
-function Slugify()
+" Slugify: Convert text into URL slug, both for line and selection{{{
+function Slugify(mode)
   let l:from = "ãàáäâẽèéëêìíïîõòóöôùúüûñç’·/_—,:; "
   let l:to   = "aaaaaeeeeeiiiiooooouuuunc---------"
-  let l:subs = substitute(tr(tolower(getline(".")), l:from, l:to), '-\+', '-', 'g')
-  call setline(".", l:subs)
+  if a:mode == "v"
+    let [l:line_start, l:column_start] = getpos("'<")[1:2]
+    let [l:line_end, l:column_end] = getpos("'>")[1:2]
+    let l:lines = getline(l:line_start, l:line_end)
+    if len(l:lines) > 1
+      echo "WARN: Do not use Slugify() with linewise selections"
+      return "" 
+    endif
+    let l:match = copy(l:lines)
+    let l:match[-1] = l:match[-1][: l:column_end - (&selection == 'inclusive' ? 1 : 2)]
+    let l:match[0] = l:match[0][l:column_start - 1:]
+    let l:subs = substitute(tr(tolower(l:match[0]), l:from, l:to), '-\+', '-', 'g')
+    let l:newline = substitute(l:lines[0], l:match[0], l:subs, '')
+  else
+    let l:newline = substitute(tr(tolower(getline(".")), l:from, l:to), '-\+', '-', 'g')
+  endif
+  call setline(".", l:newline)
 endfunction
 
-nnoremap <Leader>sl :call Slugify()<CR>
+nnoremap <Leader>sl :call Slugify("n")<CR>
+vnoremap <Leader>sl :call Slugify("v")<CR>
 "}}}
 "}}}
 " FILETYPES:{{{
