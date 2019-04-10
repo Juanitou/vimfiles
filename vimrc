@@ -426,8 +426,8 @@ nnoremap <Leader>iac :call IACMailing()<CR>
 "}}}
 " Slugify: Convert text into URL slug, both for line and selection{{{
 function Slugify(mode)
-  let l:from = "ãàáäâẽèéëêìíïîõòóöôùúüûñç’·/_—,:; "
-  let l:to   = "aaaaaeeeeeiiiiooooouuuunc---------"
+  let l:from = "ãàáäâẽèéëêìíïîõòóöôùúüûñç’·/_—–,:; "
+  let l:to   = "aaaaaeeeeeiiiiooooouuuunc----------"
   if a:mode == "v"
     let [l:line_start, l:column_start] = getpos("'<")[1:2]
     let [l:line_end, l:column_end] = getpos("'>")[1:2]
