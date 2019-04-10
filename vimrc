@@ -157,7 +157,7 @@ nnoremap <S-F4> @d<CR>ggdd
 " Surround text blocks with [list] tags
 let @e = ':%s/^$\n\(\(\S.*\n\)\+\)/[list]\r\1[\/list]/'
 "nnoremap <F5> @e<CR>
-" Insert non-breaking spaces
+" Insert non-breaking spaces if missing
 let @f = ':%s/ \([:;!?»]\)/\="\<Char-160>" . submatch(1)/g'
 let @g = ':%s/\(«\) /\=submatch(1) . "\<Char-160>"/g'
 nnoremap <Leader>nb @f<CR>@g<CR>
