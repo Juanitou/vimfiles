@@ -428,24 +428,32 @@ nnoremap <Leader>iac :call IACMailing()<CR>
 "}}}
 " Slugify: Convert text into URL slug, both for line and selection{{{
 function Slugify(mode)
-  let l:from = "ãàáäâẽèéëêìíïîõòóöôùúüûñç’·/_—–,:; "
-  let l:to   = "aaaaaeeeeeiiiiooooouuuunc----------"
+  let l:from = "ãàáäâẽèéëêìíïîõòóöôùúüûñç’·/_—–,:;() "
+  let l:to   = "aaaaaeeeeeiiiiooooouuuunc------------"
   if a:mode == "v"
     let [l:line_start, l:column_start] = getpos("'<")[1:2]
     let [l:line_end, l:column_end] = getpos("'>")[1:2]
+    " getline() returns a List instead of a String if the end is given
     let l:lines = getline(l:line_start, l:line_end)
     if len(l:lines) > 1
       echo "WARN: Do not use Slugify() with linewise selections"
       return "" 
     endif
+    " Copy the line to generate a substitute() match based on the selected text
     let l:match = copy(l:lines)
-    let l:match[-1] = l:match[-1][: l:column_end - (&selection == 'inclusive' ? 1 : 2)]
+    " First, keep from the beginning of the line till the end of the selection
+    " Account for lists being zero-based while columns start at 1
+    " Note that the 'selection' option is normally set to "exclusive"
+    let l:match[0] = l:match[0][: l:column_end - (&selection == 'inclusive' ? 1 : 2)]
+    " Then remove the beggining of the line till the start of the selection
     let l:match[0] = l:match[0][l:column_start - 1:]
+    " Slugify the match, then use it to replace the original selection
     let l:subs = substitute(tr(tolower(l:match[0]), l:from, l:to), '-\+', '-', 'g')
     let l:newline = substitute(l:lines[0], l:match[0], l:subs, '')
   else
     let l:newline = substitute(tr(tolower(getline(".")), l:from, l:to), '-\+', '-', 'g')
   endif
+  let l:newline = trim(l:newline, "-")
   call setline(".", l:newline)
 endfunction
 
