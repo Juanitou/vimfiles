@@ -318,7 +318,8 @@ else
   " grey background on StatusLine
   " and workaround for FileStyle warning on ctermbg not set
   highlight Normal ctermfg=8 ctermbg=none
-  highlight Pmenu cterm=NONE ctermbg=8 ctermfg=0
+  highlight Pmenu ctermfg=0
+  highlight PmenuSel cterm=NONE ctermfg=13 ctermbg=0
   highlight Search cterm=NONE ctermfg=136 ctermbg=13
   highlight SpecialKey gui=bold
   highlight StatusLine cterm=NONE ctermfg=NONE ctermbg=0
