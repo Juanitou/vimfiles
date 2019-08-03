@@ -182,6 +182,7 @@ Plugin 'phalkunz/vim-ss'
 " syntax
 Plugin 'PProvost/vim-ps1.git'
 Plugin 'pangloss/vim-javascript.git'
+Plugin 'dsawardekar/wordpress.vim'
 " utility
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'editorconfig/editorconfig-vim'
