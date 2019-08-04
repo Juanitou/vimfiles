@@ -317,8 +317,9 @@ else
   " Remove, amongst others, ugly bold coming from Solarized,
   " grey background on StatusLine
   " and workaround for FileStyle warning on ctermbg not set
+  " and improve popup menu both under plain vt, VNC and tmux
   highlight Normal ctermfg=8 ctermbg=none
-  highlight Pmenu ctermfg=0
+  highlight Pmenu ctermfg=0 ctermbg=225
   highlight PmenuSel cterm=NONE ctermfg=13 ctermbg=0
   highlight Search cterm=NONE ctermfg=136 ctermbg=13
   highlight SpecialKey gui=bold
