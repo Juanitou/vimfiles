@@ -365,6 +365,10 @@ if (has('win32') || has('win64'))
 endif
 "}}}
 " HTML entities Encode / Decode{{{
+
+" TODO: Consider replacing all this Perl functions with the vim-unimpaired plugin,
+" so to uninstall Strawberry Perl in Windows
+
 function! HTMLEncodeLine()
 perl << EOF
   use HTML::Entities;
