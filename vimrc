@@ -179,6 +179,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'altercation/vim-colors-solarized'
 " ftplugin
 Plugin 'phalkunz/vim-ss'
+Plugin 'matze/vim-ini-fold'
 " syntax
 Plugin 'PProvost/vim-ps1.git'
 Plugin 'pangloss/vim-javascript.git'
