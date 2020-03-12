@@ -68,6 +68,10 @@ exe 'set t_kB=' . nr2char(27) . '[Z'
 " Change default leader (\)
 let mapleader = ","
 
+" Switch default single-repeat and repeat latest f, t, F or T
+nnoremap ; .
+nnoremap . ;
+
 " Quickly quit Insert mode and save
 inoremap jk <Esc>:w<CR>
 inoremap JK <Esc>
