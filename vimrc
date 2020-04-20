@@ -68,9 +68,12 @@ exe 'set t_kB=' . nr2char(27) . '[Z'
 " Change default leader (\)
 let mapleader = ","
 
-" Switch default single-repeat and repeat latest f, t, F or T
+" Switch default single-repeat (.) and repeat forwards latest f, t, F or T (;)
 nnoremap ; .
 nnoremap . ;
+" Recover repeat backwards latest f, t, F or T (, stolen by mapleader)
+" Note that this section sign is somehow mapped by the AutoPairs plugin
+nnoremap § ,
 
 " Quickly quit Insert mode and save
 inoremap jk <Esc>:w<CR>
@@ -93,9 +96,11 @@ nnoremap g<F10> g<C-]>
 nnoremap <F11> <C-T>
 inoremap <F10> <C-]>
 
-" Easy buffer select or edit the alternate file 
+" Easy buffer browsing, selection or editing the alternate file
 nnoremap <F6> :buffers<CR>:buffer<Space>
 nnoremap <F7> :e #<CR>
+nnoremap <F12> :bn<CR>
+nnoremap <S-F12> :bp<CR>
 
 " Easier marks navigation
 nnoremap è `
