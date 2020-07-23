@@ -496,6 +496,8 @@ augroup SilverStripe
 augroup END
 " JSON:
 au! FileType json setlocal ts=2 sts=2 sw=2 expandtab
+" OpenShot_project:
+au! BufRead *.osp setfiletype json
 " VIM:
 au! FileType vim setlocal ts=2 sts=2 sw=2 expandtab foldmethod=marker
 " YAML:
