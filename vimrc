@@ -309,10 +309,11 @@ else
   "set t_Co=256
   " Transparent term
   " Force setting this to get better selection background
-  let g:solarized_termcolors = 256
+  " but it breaks color in Mintty
+  "let g:solarized_termcolors = 256
   " Setting this allows seeing the dark grey background
-  " of the terminal
-  let g:solarized_termtrans = 1
+  " on some terminals
+  "let g:solarized_termtrans = 1
   colorscheme solarized
   let g:airline_theme = 'solarized'
   "let g:airline_solarized_normal_green = 1
