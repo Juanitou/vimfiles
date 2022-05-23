@@ -214,6 +214,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'othree/html5.vim'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'Jan-Bruun-Andersen/mpq-syntax-for-vim'
 " Consider using a Language Server
 Plugin 'arnaud-lb/vim-php-namespace'
 Plugin 'stephpy/vim-php-cs-fixer'
