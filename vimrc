@@ -195,6 +195,7 @@ Plugin 'altercation/vim-colors-solarized'
 " ftplugin
 Plugin 'phalkunz/vim-ss'
 Plugin 'matze/vim-ini-fold'
+Plugin 'tmhedberg/SimpylFold'
 " syntax
 Plugin 'PProvost/vim-ps1.git'
 Plugin 'pangloss/vim-javascript.git'
@@ -250,6 +251,9 @@ let g:user_emmet_settings = webapi#json#decode(
 
 " FileStyle
 "let g:filestyle_ignore = ['help']
+
+" SimpylFold
+let g:SimpylFold_docstring_preview = 1
 
 " Indent guides
 let g:indent_guides_guide_size = 1
@@ -491,21 +495,22 @@ augroup CSS
   " Allow dashes in autocomplete
   au! FileType css setlocal iskeyword+=\-
 augroup END
-" PHP:
-" This is automatically applied by Vim
-" au BufNewFile,BufRead *.php set fileformat=unix
 " HTML:
 au! FileType html setlocal ts=2 sw=2
+" JSON:
+au! FileType json setlocal ts=2 sts=2 sw=2 expandtab
+" OpenShot_project:
+au! BufRead *.osp setfiletype json
+" PHP:
+au! FileType php setlocal textwidth=79 fileformat=unix
+" Python:
+au! FileType python setlocal textwidth=79 fileformat=unix
 " SilverStripe_template:
 augroup SilverStripe
   au! FileType ss.html setlocal ts=2 sw=2
   " Prevent variable attributes to trip the syntax checker
   let g:syntastic_html_tidy_ignore_errors = ['has invalid value "$']
 augroup END
-" JSON:
-au! FileType json setlocal ts=2 sts=2 sw=2 expandtab
-" OpenShot_project:
-au! BufRead *.osp setfiletype json
 " VIM:
 au! FileType vim setlocal ts=2 sts=2 sw=2 expandtab foldmethod=marker
 " YAML:
