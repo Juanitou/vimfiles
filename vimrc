@@ -151,9 +151,10 @@ nnoremap <leader>" viw<Esc>i"<Esc>bi"<Esc>e2l
 " See IACMailing() later
 " Common Surround over visual selected text macros
 " (note the three different ways of typing the carriage return)
-let @l = ":'<,'>norm yss<li>"
+let @l = ":'<,'>norm yss<li>^M"
 let @p = ":'<,'>norm yss<p>\<CR>"
 let @s = 'S<strong><CR>'
+let @h = 'yss<h3>'
 
 " Useful text and BBCode macros
 " Remove blank lines
