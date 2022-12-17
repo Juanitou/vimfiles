@@ -222,16 +222,18 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'othree/html5.vim'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'scrooloose/nerdcommenter'
-" Consider using a Language Server
+" Consider using a Language Server (see below Syntastic removal and
+" YouCompleteMe test)
 Plugin 'arnaud-lb/vim-php-namespace'
 Plugin 'stephpy/vim-php-cs-fixer'
 Plugin 'adoy/vim-php-refactoring-toolbox'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
-Plugin 'vim-syntastic/syntastic'
+"Plugin 'vim-syntastic/syntastic'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'mattn/webapi-vim'
 Plugin 'TTCoach'
+Plugin 'ycm-core/YouCompleteMe'
 
 " All of your Plugins must be added before the following line
 call vundle#end()           " required
@@ -251,9 +253,6 @@ let g:user_emmet_settings = webapi#json#decode(
 
 " FileStyle
 "let g:filestyle_ignore = ['help']
-
-" SimpylFold
-let g:SimpylFold_docstring_preview = 1
 
 " Indent guides
 let g:indent_guides_guide_size = 1
@@ -275,17 +274,20 @@ let g:php_cs_fixer_verbose = 1
 let g:php_cs_fixer_dry_run = 1
 
 " PHP QA
-" Unused while testing Syntastic
+" Unused while testing Syntastic or YouCompleteMe
 "let g:phpqa_php_cmd = "C:/wamp/bin/php/php5.2.9-1/php"
 
 " Syntastic
 " Automatically run :Errors to populate local-list
-let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_always_populate_loc_list = 1
 " Add ESLint to the checkers
-let g:syntastic_javascript_checkers = ['eslint']
+"let g:syntastic_javascript_checkers = ['eslint']
 " Add PHP_CodeSniffer to the checkers, do not print warnings
-let g:syntastic_php_checkers = ['php', 'phpcs']
-let g:syntastic_php_phpcs_args = '-n'
+"let g:syntastic_php_checkers = ['php', 'phpcs']
+"let g:syntastic_php_phpcs_args = '-n'
+
+" SimpylFold
+let g:SimpylFold_docstring_preview = 1
 
 " tmux Navigator
 " Workaround for default <C-H> map sending a backspace
@@ -326,7 +328,7 @@ else
   " on some terminals
   "let g:solarized_termtrans = 1
   colorscheme solarized
-  let g:airline_theme = 'solarized'
+  let g:airline_theme = 'solarized_flood'
   "let g:airline_solarized_normal_green = 1
   " Informative text black instead of white
   let g:airline_solarized_dark_text = 1
@@ -342,12 +344,13 @@ else
   " and workaround for FileStyle warning on ctermbg not set
   " and improve popup menu both under plain vt, VNC and tmux
   highlight Normal ctermfg=8 ctermbg=none
-  highlight Pmenu ctermfg=0 ctermbg=225
+  highlight Pmenu cterm=bold ctermfg=0 ctermbg=225
   highlight PmenuSel cterm=NONE ctermfg=13 ctermbg=0
   highlight Search cterm=NONE ctermfg=136 ctermbg=13
   highlight SpecialKey gui=bold
   highlight StatusLine cterm=NONE ctermfg=NONE ctermbg=0
   highlight StatusLineNC cterm=reverse ctermfg=0
+  highlight Visual ctermfg=240
   highlight WildMenu cterm=NONE
 endif
 "}}}
@@ -509,7 +512,7 @@ au! FileType python setlocal textwidth=79 fileformat=unix
 augroup SilverStripe
   au! FileType ss.html setlocal ts=2 sw=2
   " Prevent variable attributes to trip the syntax checker
-  let g:syntastic_html_tidy_ignore_errors = ['has invalid value "$']
+  "let g:syntastic_html_tidy_ignore_errors = ['has invalid value "$']
 augroup END
 " VIM:
 au! FileType vim setlocal ts=2 sts=2 sw=2 expandtab foldmethod=marker
