@@ -340,11 +340,6 @@ else
   let g:airline_solarized_dark_text = 1
   "let g:airline_solarized_bg = 'dark'
   let g:airline_powerline_fonts = 1
-  " Airline c section has an issue with solarized
-  " that prints the buffername in the background color.
-  " Define custom highlighting as a workaround.
-  highlight airline_custom ctermfg=3 ctermbg=235
-  let g:airline_section_c='%<%<%#airline_custom#%{airline#extensions#fugitiveline#bufname()}%#__restore__#%m %#__accent_red#%{airline#util#wrap(airline#parts#readonly(),0)}%#__restore__#'
   " Remove, amongst others, ugly bold coming from Solarized,
   " grey background on StatusLine
   " and workaround for FileStyle warning on ctermbg not set
