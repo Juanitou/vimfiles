@@ -292,7 +292,11 @@ let g:SimpylFold_docstring_preview = 1
 " tmux Navigator
 " Workaround for default <C-H> map sending a backspace
 nnoremap <silent> <BS> :TmuxNavigateLeft<CR>
-"}}}
+
+" YouCompleteMe
+map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+""}}}
 "}}}
 " LAYOUT AND COLORS:{{{
 " Wraps on words instead of characters
