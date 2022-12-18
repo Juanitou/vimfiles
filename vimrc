@@ -98,7 +98,7 @@ inoremap <F10> <C-]>
 
 " Easy buffer browsing, selection or editing the alternate file
 nnoremap <F6> :buffers<CR>:buffer<Space>
-nnoremap <F7> :e #<CR>
+nnoremap <S-F6> :e #<CR>
 nnoremap <F12> :bn<CR>
 nnoremap <S-F12> :bp<CR>
 
@@ -159,19 +159,19 @@ let @h = 'yss<h3>'
 " Useful text and BBCode macros
 " Remove blank lines
 let @a = ':g/^$/d'
-nnoremap <F2> @a<CR>
+nnoremap <leader><F2> @a<CR>
 " Replace MS Word bullets (shown as e.g. ) or leading blanks with BBCode
 let @b = ':%s/^\W\+/[*] /'
-nnoremap <F3> @b<CR>
+nnoremap <leader><F3> @b<CR>
 " Change headings case and make them bold,
 " add blank lines if necessary
 let @c = ':%s/^\(\I\)\(.*\)/[b]\1\L\2[\/b]/'
 let @d = ':%s/^\(\I\)\(.*\)/\r[b]\1\L\2[\/b]\r/'
-nnoremap <F4> @c<CR>
-nnoremap <S-F4> @d<CR>ggdd
+nnoremap <leader><F4> @c<CR>
+nnoremap <leader><S-F4> @d<CR>ggdd
 " Surround text blocks with [list] tags
 let @e = ':%s/^$\n\(\(\S.*\n\)\+\)/[list]\r\1[\/list]/'
-"nnoremap <F5> @e<CR>
+"nnoremap <leader><F5> @e<CR>
 " Insert non-breaking spaces if missing
 let @f = ':%s/ \([:;!?»]\)/\="\<Char-160>" . submatch(1)/g'
 let @g = ':%s/\(«\) /\=submatch(1) . "\<Char-160>"/g'
@@ -223,7 +223,12 @@ Plugin 'othree/html5.vim'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'scrooloose/nerdcommenter'
 " Consider using a Language Server (see below Syntastic removal and
-" YouCompleteMe test)
+" YouCompleteMe and ALE test)
+
+" WIP Asynchronous Lint Engine and other Python plugins
+"Plugin 'dense-analysis/ale'
+Plugin 'nvie/vim-flake8'
+
 Plugin 'arnaud-lb/vim-php-namespace'
 Plugin 'stephpy/vim-php-cs-fixer'
 Plugin 'adoy/vim-php-refactoring-toolbox'
