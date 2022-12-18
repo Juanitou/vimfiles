@@ -233,7 +233,9 @@ Plugin 'tpope/vim-surround'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'mattn/webapi-vim'
 Plugin 'TTCoach'
-Plugin 'ycm-core/YouCompleteMe'
+if !(has('win32') || has('win64'))
+  Plugin 'ycm-core/YouCompleteMe'
+endif
 
 " All of your Plugins must be added before the following line
 call vundle#end()           " required
