@@ -504,7 +504,7 @@ vnoremap <Leader>sl :call Slugify("v")<CR>
 " CSS:
 augroup CSS
   " Allow dashes in autocomplete
-  au! FileType css setlocal iskeyword+=\-
+  au! FileType css setlocal iskeyword+=\- ts=2 sw=2
 augroup END
 " HTML:
 au! FileType html setlocal ts=2 sw=2
@@ -524,6 +524,8 @@ augroup SilverStripe
 augroup END
 " VIM:
 au! FileType vim setlocal ts=2 sts=2 sw=2 expandtab foldmethod=marker
+" XML:
+au! FileType xml setlocal ts=2 sw=2
 " YAML:
 au! FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 "}}}
