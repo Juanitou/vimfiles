@@ -27,9 +27,8 @@ if (has('win32') || has('win64'))
 " CTRL-A is Select all instead of Add
 "nunmap <C-A>
 "vunmap <C-A>
-" Use PowerShell as shell
-" WARNING: breaks scripts as Vundle…
-"set shell=powershell
+" Use Git Bash as shell
+set shell=\"C:\Program\ Files\Git\git-bash.exe\"
 "set shellcmdflag=-Command
 " For debugging external commands
 "set shellcmdflag=-Noexit\ -Command
