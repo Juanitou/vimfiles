@@ -155,6 +155,9 @@ let @l = ":'<,'>norm yss<li>^M"
 let @p = ":'<,'>norm yss<p>\<CR>"
 let @s = 'S<strong><CR>'
 let @h = 'yss<h3>'
+" Surround customized global variables
+" Use to change surrounding simple quotes: cs""
+let g:surround_34 = "“\r”"
 
 " Useful text and BBCode macros
 " Remove blank lines
