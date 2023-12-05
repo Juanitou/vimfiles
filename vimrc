@@ -517,7 +517,7 @@ au! BufRead *.osp setfiletype json
 " PHP:
 au! FileType php setlocal textwidth=79 fileformat=unix
 " Python:
-au! FileType python setlocal textwidth=79 fileformat=unix
+au! FileType python setlocal textwidth=0 fileformat=unix
 " SilverStripe_template:
 augroup SilverStripe
   au! FileType ss.html setlocal ts=2 sw=2
