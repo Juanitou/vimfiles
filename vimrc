@@ -153,6 +153,7 @@ nnoremap <leader>" viw<Esc>i"<Esc>bi"<Esc>e2l
 let @l = ":'<,'>norm yss<li>^M"
 let @p = ":'<,'>norm yss<p>\<CR>"
 let @s = 'S<strong><CR>'
+let @e = 'S<em><CR>'
 let @h = 'yss<h3>'
 " Surround customized global variables
 " Use to change surrounding simple quotes: cs""
@@ -172,7 +173,7 @@ let @d = ':%s/^\(\I\)\(.*\)/\r[b]\1\L\2[\/b]\r/'
 nnoremap <leader><F4> @c<CR>
 nnoremap <leader><S-F4> @d<CR>ggdd
 " Surround text blocks with [list] tags
-let @e = ':%s/^$\n\(\(\S.*\n\)\+\)/[list]\r\1[\/list]/'
+"let @e = ':%s/^$\n\(\(\S.*\n\)\+\)/[list]\r\1[\/list]/'
 "nnoremap <leader><F5> @e<CR>
 " Insert non-breaking spaces if missing
 let @f = ':%s/ \([:;!?»]\)/\="\<Char-160>" . submatch(1)/g'
