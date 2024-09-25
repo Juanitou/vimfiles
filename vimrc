@@ -319,7 +319,7 @@ set linebreak
 "highlight Normal font=Consolas:h14:cDEFAULT
 
 if has("gui_running")
-  set lines=46 columns=92
+  set lines=56 columns=112
   " Remove m: Menu bar, g: Grey menu items, t: Tearoff menu items, T: Toolbar
   set guioptions=egrL
   set background=light
