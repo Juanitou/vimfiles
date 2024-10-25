@@ -528,7 +528,7 @@ augroup END
 " VIM:
 au! FileType vim setlocal ts=2 sts=2 sw=2 expandtab foldmethod=marker
 " XML:
-au! FileType xml setlocal ts=2 sw=2
+au! FileType xml setlocal ts=4 sw=4
 " YAML:
 au! FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 "}}}
